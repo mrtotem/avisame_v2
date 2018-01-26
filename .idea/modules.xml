@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Avisame.iml" filepath="$PROJECT_DIR$/Avisame.iml" />
+      <module fileurl="file://C:\Users\Octavio\AndroidStudioProjects\AvisameV2\Avisame.iml" filepath="C:\Users\Octavio\AndroidStudioProjects\AvisameV2\Avisame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AvisameV2.iml" filepath="$PROJECT_DIR$/AvisameV2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

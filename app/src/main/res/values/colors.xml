@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#4A4A4A</color>
+    <color name="colorPrimary">#770306</color>
+    <color name="colorPrimaryDark">#6f2b39</color>
     <color name="colorPrimaryLight">#FFFFFF</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="colorLlegue">#0ED145</color>
+    <color name="colorLlegue">#80B74B</color>
     <color name="colorAlerta">#D7ED5B</color>
-    <color name="colorPeligro">#E0232D</color>
+    <color name="colorPeligro">#E24150</color>
+    <color name="colorTracking">#8e9fba</color>
+    <color name="colorDarkTransparent">#60000000</color>
 </resources>

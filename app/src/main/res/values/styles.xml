@@ -9,4 +9,9 @@
         <item name="android:windowDisablePreview">true</item>
     </style>
 
+    <style name="AvisameDigitaltPrimaryLightMedium">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorPrimaryLight</item>
+    </style>
 </resources>

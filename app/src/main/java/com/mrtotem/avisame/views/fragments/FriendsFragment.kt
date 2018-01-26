@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.mrtotem.avisame.R
 
-class MessagesFragment : Fragment() {
+class FriendsFragment : Fragment() {
 
     private var mParam1: String? = null
     private var mParam2: String? = null
@@ -23,16 +23,17 @@ class MessagesFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater!!.inflate(R.layout.fragment_messages, container, false)
+        return inflater!!.inflate(R.layout.fragment_friends, container, false)
     }
 
 
     companion object {
+
         private val ARG_PARAM1 = "param1"
         private val ARG_PARAM2 = "param2"
 
-        fun newInstance(param1: String, param2: String): MessagesFragment {
-            val fragment = MessagesFragment()
+        fun newInstance(param1: String, param2: String): FriendsFragment {
+            val fragment = FriendsFragment()
             val args = Bundle()
             args.putString(ARG_PARAM1, param1)
             args.putString(ARG_PARAM2, param2)

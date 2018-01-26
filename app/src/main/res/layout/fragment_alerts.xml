@@ -3,13 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.mrtotem.avisame.views.fragments.AlertsFragment">
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/arrived_button"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -35,13 +36,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2">
 
-                <TextView
+                <widgets.AvisameTextView
+                    android:id="@+id/arrived_text"
+                    style="@style/AvisameDigitaltPrimaryLightMedium"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="LLEGUE"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:text="LLEGUE" />
             </LinearLayout>
 
             <LinearLayout
@@ -85,13 +86,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2">
 
-                <TextView
+                <widgets.AvisameTextView
+                    android:id="@+id/alert_text"
+                    style="@style/AvisameDigitaltPrimaryLightMedium"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="ALERTA"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:text="ALERTA" />
             </LinearLayout>
 
             <LinearLayout
@@ -110,6 +111,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/danger_button"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -135,13 +137,65 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2">
 
-                <TextView
+                <widgets.AvisameTextView
+                    android:id="@+id/danger_text"
+                    style="@style/AvisameDigitaltPrimaryLightMedium"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="PELIGRO"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:text="PELIGRO" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/right_arrow_white" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tracking_button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/colorTracking"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/tracking_icon"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:padding="5dp"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/pin" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2">
+
+                <widgets.AvisameTextView
+                    android:id="@+id/tracking_text"
+                    style="@style/AvisameDigitaltPrimaryLightMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="TRACKING" />
             </LinearLayout>
 
             <LinearLayout

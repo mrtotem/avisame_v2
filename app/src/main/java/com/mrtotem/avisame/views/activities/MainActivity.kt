@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar
 import android.view.View
 import com.mrtotem.avisame.R
 import com.mrtotem.avisame.views.fragments.AlertsFragment
+import com.mrtotem.avisame.views.fragments.FriendsFragment
+import com.mrtotem.avisame.views.fragments.MessagesFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,16 +22,19 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById<Toolbar>(R.id.toolbar) as Toolbar
         tabLayout = findViewById<View>(R.id.tab) as TabLayout
 
+        toolbar.title = "Avisame!"
         setSupportActionBar(toolbar)
-        toolbar.setTitle(getString(R.string.main_title))
 
         initTabs()
     }
 
     private fun initTabs() {
+
         tabLayout.addTab(tabLayout.newTab().setText("alertar"))
         tabLayout.addTab(tabLayout.newTab().setText("mensajes"))
-        tabLayout.addTab(tabLayout.newTab().setText("perfil"))
+        tabLayout.addTab(tabLayout.newTab().setText("amigos"))
+
+        openSection(tabLayout.getTabAt(0))
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -51,8 +56,15 @@ class MainActivity : AppCompatActivity() {
         when (tab?.position) {
             0 -> supportFragmentManager
                     .beginTransaction()
-                    .setCustomAnimations(R.anim.abc_popup_enter, R.anim.abc_slide_out_top)
-                    .add(R.id.main_content, AlertsFragment.newInstance("", ""), "alerts_fragment")
+                    .replace(R.id.main_content, AlertsFragment.newInstance("", ""), "alerts_fragment")
+                    .commit()
+            1 -> supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.main_content, MessagesFragment.newInstance("", ""), "messajes_fragment")
+                    .commit()
+            2 -> supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.main_content, FriendsFragment.newInstance("", ""), "friends_fragment")
                     .commit()
         }
     }

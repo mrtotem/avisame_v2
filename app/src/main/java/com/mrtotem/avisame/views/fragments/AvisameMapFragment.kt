@@ -8,7 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.mrtotem.avisame.R
@@ -17,11 +18,17 @@ import com.mrtotem.avisame.R
 /**
  * A simple [Fragment] subclass.
  */
-class AvisameMapFragment : Fragment() {
+class AvisameMapFragment : OnMapReadyCallback, Fragment() {
+
+    override fun onMapReady(p0: GoogleMap?) {
+        showMap(p0)
+    }
+
+    private val MAPVIEW_BUNDLE_KEY = "MapViewBundleKey"
 
     private var mParam1: String? = null
     private var mParam2: String? = null
-    private var map: SupportMapFragment? = null
+    private var map: MapView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,22 +41,63 @@ class AvisameMapFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater!!.inflate(R.layout.fragment_map, container, false) as View
+        val v: View = inflater!!.inflate(R.layout.fragment_map, container, false) as View
+
+        map = v.findViewById<MapView>(R.id.map) as MapView
+
+        // *** IMPORTANT ***
+        // MapView requires that the Bundle you pass contain _ONLY_ MapView SDK
+        // objects or sub-Bundles.
+        var mapViewBundle: Bundle? = null
+        if (savedInstanceState != null) {
+            mapViewBundle = savedInstanceState.getBundle(MAPVIEW_BUNDLE_KEY)
+        }
+        map?.onCreate(mapViewBundle)
+
+        return v
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        map = activity.supportFragmentManager
-                .findFragmentById(R.id.map) as SupportMapFragment
-        map?.getMapAsync { p0 -> showMap(p0) }
+        map?.getMapAsync(this)
     }
 
-    private fun showMap(map: GoogleMap) {
+    override fun onResume() {
+        map?.onResume()
+        super.onResume()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        map?.onStart()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        map?.onStop()
+    }
+
+    override fun onPause() {
+        map?.onPause()
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        map?.onDestroy()
+        super.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        map?.onLowMemory()
+    }
+
+    private fun showMap(map: GoogleMap?) {
         val sydney = LatLng(-33.852, 151.211)
-        map.addMarker(MarkerOptions().position(sydney)
+        map?.addMarker(MarkerOptions().position(sydney)
                 .title("Marker in Sydney"))
-        map.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        map?.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
 
     companion object {
