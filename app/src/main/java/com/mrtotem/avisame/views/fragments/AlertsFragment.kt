@@ -40,7 +40,7 @@ class AlertsFragment : Fragment() {
                     .beginTransaction()
                     .setCustomAnimations(R.anim.abc_slide_in_bottom, R.anim.abc_slide_out_bottom)
                     .addToBackStack("map_fragment")
-                    .add(R.id.main_content, MapFragment.newInstance("", ""), "map_fragment")
+                    .add(R.id.main_content, AvisameMapFragment.newInstance("", ""), "map_fragment")
                     .commit()
         }
     }

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "761903879323",
+    "firebase_url": "https://avisamev2.firebaseio.com",
+    "project_id": "avisamev2",
+    "storage_bucket": "avisamev2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:761903879323:android:c197f341b2cc1214",
+        "android_client_info": {
+          "package_name": "com.mrtotem.avisame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "761903879323-7a3f7aimuqq2tgvd24esmqpt43l43dh6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5YwEwISM_6RRewaQlaLF9DPJ7AKIrfQ4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
