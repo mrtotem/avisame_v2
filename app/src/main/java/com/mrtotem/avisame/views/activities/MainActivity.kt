@@ -6,38 +6,46 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.View
 import com.mrtotem.avisame.R
+import com.mrtotem.avisame.presenters.MainPresenter
 import com.mrtotem.avisame.views.fragments.AlertsFragment
 import com.mrtotem.avisame.views.fragments.FriendsFragment
 import com.mrtotem.avisame.views.fragments.MessagesFragment
+import com.mrtotem.avisame.views.interfaces.BaseMvp
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseMvp, AppCompatActivity() {
 
-    private lateinit var toolbar: Toolbar
-    private lateinit var tabLayout: TabLayout
+    private lateinit var mToolbar: Toolbar
+    private lateinit var mTabLayout: TabLayout
+    private lateinit var mMainPresenter: MainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        toolbar = findViewById<Toolbar>(R.id.toolbar) as Toolbar
-        tabLayout = findViewById<View>(R.id.tab) as TabLayout
+        mToolbar = findViewById<Toolbar>(R.id.toolbar) as Toolbar
+        mTabLayout = findViewById<View>(R.id.tab) as TabLayout
 
-        toolbar.title = "Avisame!"
-        setSupportActionBar(toolbar)
+        setSupportActionBar(mToolbar)
 
         initTabs()
+        startsMainPresenter()
     }
 
     private fun initTabs() {
 
-        tabLayout.addTab(tabLayout.newTab().setText("alertar"))
-        tabLayout.addTab(tabLayout.newTab().setText("mensajes"))
-        tabLayout.addTab(tabLayout.newTab().setText("amigos"))
+        mTabLayout.addTab(mTabLayout.newTab().setIcon(resources.getDrawable(R.mipmap.action)))
+        mTabLayout.addTab(mTabLayout.newTab().setIcon(resources.getDrawable(R.mipmap.message_unselected)))
+        mTabLayout.addTab(mTabLayout.newTab().setIcon(resources.getDrawable(R.mipmap.friends_unselected)))
 
-        openSection(tabLayout.getTabAt(0))
+        openSection(mTabLayout.getTabAt(0))
 
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+        mTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
+                when (tab!!.position) {
+                    0 -> tab.icon = resources.getDrawable(R.mipmap.action)
+                    1 -> tab.icon = resources.getDrawable(R.mipmap.message)
+                    2 -> tab.icon = resources.getDrawable(R.mipmap.friends)
+                }
                 openSection(tab)
             }
 
@@ -46,7 +54,11 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-
+                when (tab!!.position) {
+                    0 -> tab.icon = resources.getDrawable(R.mipmap.action_unselected)
+                    1 -> tab.icon = resources.getDrawable(R.mipmap.message_unselected)
+                    2 -> tab.icon = resources.getDrawable(R.mipmap.friends_unselected)
+                }
             }
         })
     }
@@ -67,5 +79,26 @@ class MainActivity : AppCompatActivity() {
                     .replace(R.id.main_content, FriendsFragment.newInstance("", ""), "friends_fragment")
                     .commit()
         }
+    }
+
+    private fun startsMainPresenter() {
+
+        mMainPresenter = MainPresenter()
+    }
+
+    override fun configToolbar(backButton: Boolean) {
+
+        if (backButton) {
+            mToolbar.navigationIcon = resources.getDrawable(R.mipmap.back_arrow)
+            mToolbar.setNavigationOnClickListener {
+                onBackPressed()
+            }
+        } else {
+            mToolbar.navigationIcon = null
+        }
+    }
+
+    override fun setToolbarTitle(title: String) {
+        mToolbar.title = title
     }
 }

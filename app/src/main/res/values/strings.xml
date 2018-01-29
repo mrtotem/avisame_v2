@@ -5,4 +5,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="google_maps_key">AIzaSyBmpPzTVdChM2fAp3m9LsvLeZI9j5GuaWo</string>
+    <string name="title_messages">Mensajes</string>
+    <string name="title_alerts">Avisame!!</string>
+    <string name="title_friends">Amigos</string>
+    <string name="title_map_following">Seguime!!</string>
 </resources>

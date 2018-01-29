@@ -1,14 +1,14 @@
 package com.mrtotem.avisame.views.fragments
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.mrtotem.avisame.R
+import com.mrtotem.avisame.views.fragments.base.BaseFragment
 
-class AlertsFragment : Fragment() {
+class AlertsFragment : BaseFragment() {
 
     private var mParam1: String? = null
     private var mParam2: String? = null
@@ -52,6 +52,12 @@ class AlertsFragment : Fragment() {
                     .replace(R.id.main_content, AvisameMapFragment.newInstance("", ""), "map_fragment")
                     .commit()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        mHomeMvp?.setToolbarTitle(getString(R.string.title_alerts))
     }
 
     companion object {

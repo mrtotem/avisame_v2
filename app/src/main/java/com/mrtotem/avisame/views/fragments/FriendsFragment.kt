@@ -1,13 +1,13 @@
 package com.mrtotem.avisame.views.fragments
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mrtotem.avisame.R
+import com.mrtotem.avisame.views.fragments.base.BaseFragment
 
-class FriendsFragment : Fragment() {
+class FriendsFragment : BaseFragment() {
 
     private var mParam1: String? = null
     private var mParam2: String? = null
@@ -26,6 +26,11 @@ class FriendsFragment : Fragment() {
         return inflater!!.inflate(R.layout.fragment_friends, container, false)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        mHomeMvp?.setToolbarTitle(getString(R.string.title_friends))
+    }
 
     companion object {
 

@@ -13,12 +13,13 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.mrtotem.avisame.R
+import com.mrtotem.avisame.views.fragments.base.BaseFragment
 
 
 /**
  * A simple [Fragment] subclass.
  */
-class AvisameMapFragment : OnMapReadyCallback, Fragment() {
+class AvisameMapFragment : OnMapReadyCallback, BaseFragment() {
 
     override fun onMapReady(p0: GoogleMap?) {
         showMap(p0)
@@ -66,6 +67,9 @@ class AvisameMapFragment : OnMapReadyCallback, Fragment() {
     override fun onResume() {
         map?.onResume()
         super.onResume()
+
+        mHomeMvp!!.configToolbar(true)
+        mHomeMvp!!.setToolbarTitle(getString(R.string.title_map_following))
     }
 
     override fun onStart() {

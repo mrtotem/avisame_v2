@@ -6,6 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:padding="10dp"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
@@ -14,7 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/colorLlegue"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -26,9 +26,9 @@
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:padding="5dp"
+                    android:padding="10dp"
                     android:scaleType="centerInside"
-                    android:src="@mipmap/llegue_ok" />
+                    android:src="@mipmap/llegue_ok_green" />
             </LinearLayout>
 
             <LinearLayout
@@ -38,7 +38,7 @@
 
                 <widgets.AvisameTextView
                     android:id="@+id/arrived_text"
-                    style="@style/AvisameDigitaltPrimaryLightMedium"
+                    style="@style/AvisameDigitaltTextDarkLarge"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -56,16 +56,20 @@
                     android:layout_height="40dp"
                     android:padding="10dp"
                     android:scaleType="centerInside"
-                    android:src="@mipmap/right_arrow_white" />
+                    android:src="@mipmap/right_arrow_dark" />
             </LinearLayout>
         </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextLight" />
 
         <LinearLayout
             android:id="@+id/alert_button"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/colorAlerta"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -77,8 +81,9 @@
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
+                    android:padding="10dp"
                     android:scaleType="centerInside"
-                    android:src="@mipmap/alerta" />
+                    android:src="@mipmap/alerta_yellow" />
             </LinearLayout>
 
             <LinearLayout
@@ -88,7 +93,7 @@
 
                 <widgets.AvisameTextView
                     android:id="@+id/alert_text"
-                    style="@style/AvisameDigitaltPrimaryLightMedium"
+                    style="@style/AvisameDigitaltTextDarkLarge"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -106,16 +111,20 @@
                     android:layout_height="40dp"
                     android:padding="10dp"
                     android:scaleType="centerInside"
-                    android:src="@mipmap/right_arrow_white" />
+                    android:src="@mipmap/right_arrow_dark" />
             </LinearLayout>
         </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextLight" />
 
         <LinearLayout
             android:id="@+id/danger_button"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/colorPeligro"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -127,9 +136,9 @@
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:padding="5dp"
+                    android:padding="10dp"
                     android:scaleType="centerInside"
-                    android:src="@mipmap/peligro" />
+                    android:src="@mipmap/peligro_red" />
             </LinearLayout>
 
             <LinearLayout
@@ -139,7 +148,7 @@
 
                 <widgets.AvisameTextView
                     android:id="@+id/danger_text"
-                    style="@style/AvisameDigitaltPrimaryLightMedium"
+                    style="@style/AvisameDigitaltTextDarkLarge"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -157,16 +166,20 @@
                     android:layout_height="40dp"
                     android:padding="10dp"
                     android:scaleType="centerInside"
-                    android:src="@mipmap/right_arrow_white" />
+                    android:src="@mipmap/right_arrow_dark" />
             </LinearLayout>
         </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextLight" />
 
         <LinearLayout
             android:id="@+id/tracking_button"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/colorTracking"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -179,9 +192,9 @@
                     android:id="@+id/tracking_icon"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:padding="5dp"
+                    android:padding="10dp"
                     android:scaleType="centerInside"
-                    android:src="@mipmap/pin" />
+                    android:src="@mipmap/pin_purple" />
             </LinearLayout>
 
             <LinearLayout
@@ -191,7 +204,7 @@
 
                 <widgets.AvisameTextView
                     android:id="@+id/tracking_text"
-                    style="@style/AvisameDigitaltPrimaryLightMedium"
+                    style="@style/AvisameDigitaltTextDarkLarge"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -209,7 +222,7 @@
                     android:layout_height="40dp"
                     android:padding="10dp"
                     android:scaleType="centerInside"
-                    android:src="@mipmap/right_arrow_white" />
+                    android:src="@mipmap/right_arrow_dark" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
