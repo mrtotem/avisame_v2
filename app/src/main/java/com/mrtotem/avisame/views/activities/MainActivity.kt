@@ -1,12 +1,13 @@
 package com.mrtotem.avisame.views.activities
 
 import android.os.Bundle
-import android.support.design.widget.NavigationView
 import android.support.design.widget.TabLayout
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.View
 import com.mrtotem.avisame.R
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity(), BaseMvp {
 
     private lateinit var mToolbar: Toolbar
     private lateinit var mTabLayout: TabLayout
-    private lateinit var mNavigationView: NavigationView
+    private lateinit var mNavigationView: RecyclerView
     private lateinit var mDrawerLayout: DrawerLayout
     private lateinit var mMainPresenter: MainPresenter
 
@@ -32,17 +33,12 @@ class MainActivity : AppCompatActivity(), BaseMvp {
         mToolbar = findViewById<Toolbar>(R.id.toolbar) as Toolbar
         mTabLayout = findViewById<View>(R.id.tab) as TabLayout
         mDrawerLayout = findViewById<DrawerLayout>(R.id.drawer) as DrawerLayout
-        mNavigationView = findViewById<NavigationView>(R.id.nav_view) as NavigationView
+        mNavigationView = findViewById<RecyclerView>(R.id.nav_view) as RecyclerView
 
         setSupportActionBar(mToolbar)
-
-        val toggle = ActionBarDrawerToggle(
-                this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        mDrawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-
+        initMainPresenter()
+        initNavView()
         initTabs()
-        startsMainPresenter()
     }
 
     override fun onBackPressed() {
@@ -51,6 +47,17 @@ class MainActivity : AppCompatActivity(), BaseMvp {
         } else {
             super.onBackPressed()
         }
+    }
+
+    private fun initNavView() {
+        val toggle = ActionBarDrawerToggle(
+                this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        mDrawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        mNavigationView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
+        mNavigationView.adapter = mMainPresenter.buildNavigationView()
     }
 
     private fun initTabs() {
@@ -103,9 +110,18 @@ class MainActivity : AppCompatActivity(), BaseMvp {
         }
     }
 
-    private fun startsMainPresenter() {
+    private fun initMainPresenter() {
 
         mMainPresenter = MainPresenter()
+        mMainPresenter.attachView(this)
+    }
+
+    override fun onDrawerClose() {
+        mDrawerLayout.closeDrawer(GravityCompat.START)
+    }
+
+    override fun getContext(): MainActivity {
+        return this
     }
 
     override fun configToolbar(type: UITypes) {

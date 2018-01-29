@@ -37,7 +37,7 @@ class FriendsAdapter(val context: Context, val userList: ArrayList<String>?) : R
 
         return when (viewType) {
             ADD_FRIEND -> AddFriendVH(LayoutInflater.from(parent?.context).inflate(R.layout.row_add_friend, parent, false))
-            else -> FriendVH(LayoutInflater.from(parent?.context).inflate(R.layout.row_friend, parent, false))
+            else -> FriendVH(LayoutInflater.from(parent?.context).inflate(R.layout.row_friend, parent, false), this)
         }
     }
 
@@ -62,19 +62,25 @@ class FriendsAdapter(val context: Context, val userList: ArrayList<String>?) : R
                 (holder as FriendVH).setupFriendVH(
                         context,
                         (rows?.get(position) as FriendView).name,
-                        (rows?.get(position) as FriendView).isSelected)
+                        (rows?.get(position) as FriendView).isSelected,
+                        position)
         }
     }
 
-    class FriendVH(v: View) : RecyclerView.ViewHolder(v) {
+    class FriendVH(v: View, private val adapter: FriendsAdapter) : RecyclerView.ViewHolder(v) {
 
         var friendName: AvisameTextView = v.findViewById<AvisameTextView>(R.id.friend_name) as AvisameTextView
         var avatar: SimpleDraweeView = v.findViewById<SimpleDraweeView>(R.id.friend_avatar) as SimpleDraweeView
         var selected: ImageView = v.findViewById(R.id.selected)
 
-        fun setupFriendVH(context: Context, name: String?, isSelected: Boolean) {
+        fun setupFriendVH(context: Context, name: String?, isSelected: Boolean, position: Int) {
+
+            avatar.setOnClickListener({
+                adapter.notifiyNewSelection(position)
+            })
 
             friendName.text = name
+
             if (isSelected) {
                 friendName.setTextColor(context.resources.getColor(R.color.colorTabElementSelected))
                 selected.visibility = View.VISIBLE
@@ -100,7 +106,19 @@ class FriendsAdapter(val context: Context, val userList: ArrayList<String>?) : R
         var avatar: String? = friendAvatar
     }
 
-    class AddFriendView {
+    class AddFriendView {}
 
+    fun notifiyNewSelection(position: Int) {
+
+        rows!!
+                .filterIsInstance<FriendView>()
+                .filter { rows!!.indexOf(it) != position }
+                .forEach { it.isSelected = false }
+
+        if (rows!![position] is FriendView) {
+            (rows!![position] as FriendView).isSelected = true
+        }
+
+        notifyDataSetChanged()
     }
 }
