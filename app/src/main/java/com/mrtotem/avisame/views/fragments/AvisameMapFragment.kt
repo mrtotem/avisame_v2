@@ -13,6 +13,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.mrtotem.avisame.R
+import com.mrtotem.avisame.enums.UITypes
 import com.mrtotem.avisame.views.fragments.base.BaseFragment
 
 
@@ -68,7 +69,7 @@ class AvisameMapFragment : OnMapReadyCallback, BaseFragment() {
         map?.onResume()
         super.onResume()
 
-        mHomeMvp!!.configToolbar(true)
+        mHomeMvp!!.configToolbar(UITypes.WITH_BACK_BUTTON)
         mHomeMvp!!.setToolbarTitle(getString(R.string.title_map_following))
     }
 

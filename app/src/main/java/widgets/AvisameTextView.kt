@@ -13,7 +13,7 @@ import com.mrtotem.avisame.R
 class AvisameTextView(context: Context, attrs: AttributeSet?) : AppCompatTextView(context, attrs) {
 
     init {
-        val typeface = ResourcesCompat.getFont(context, R.font.neoteric)
-        setTypeface(typeface, Typeface.BOLD)
+        val typeface = ResourcesCompat.getFont(context, R.font.bowhouse_bold)
+        setTypeface(typeface, Typeface.NORMAL)
     }
 }

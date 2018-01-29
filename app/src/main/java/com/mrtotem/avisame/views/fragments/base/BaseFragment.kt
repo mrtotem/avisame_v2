@@ -2,6 +2,7 @@ package com.mrtotem.avisame.views.fragments.base
 
 import android.content.Context
 import android.support.v4.app.Fragment
+import com.mrtotem.avisame.enums.UITypes
 import com.mrtotem.avisame.views.interfaces.BaseMvp
 
 /**
@@ -22,7 +23,7 @@ abstract class BaseFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        mHomeMvp!!.configToolbar(false)
+        mHomeMvp!!.configToolbar(UITypes.WITH_NAVIGATION)
     }
 
     override fun onDetach() {

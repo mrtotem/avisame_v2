@@ -1,21 +1,28 @@
 package com.mrtotem.avisame.views.activities
 
 import android.os.Bundle
+import android.support.design.widget.NavigationView
 import android.support.design.widget.TabLayout
+import android.support.v4.view.GravityCompat
+import android.support.v4.widget.DrawerLayout
+import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.View
 import com.mrtotem.avisame.R
+import com.mrtotem.avisame.enums.UITypes
 import com.mrtotem.avisame.presenters.MainPresenter
 import com.mrtotem.avisame.views.fragments.AlertsFragment
 import com.mrtotem.avisame.views.fragments.FriendsFragment
 import com.mrtotem.avisame.views.fragments.MessagesFragment
 import com.mrtotem.avisame.views.interfaces.BaseMvp
 
-class MainActivity : BaseMvp, AppCompatActivity() {
+class MainActivity : AppCompatActivity(), BaseMvp {
 
     private lateinit var mToolbar: Toolbar
     private lateinit var mTabLayout: TabLayout
+    private lateinit var mNavigationView: NavigationView
+    private lateinit var mDrawerLayout: DrawerLayout
     private lateinit var mMainPresenter: MainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,11 +31,26 @@ class MainActivity : BaseMvp, AppCompatActivity() {
 
         mToolbar = findViewById<Toolbar>(R.id.toolbar) as Toolbar
         mTabLayout = findViewById<View>(R.id.tab) as TabLayout
+        mDrawerLayout = findViewById<DrawerLayout>(R.id.drawer) as DrawerLayout
+        mNavigationView = findViewById<NavigationView>(R.id.nav_view) as NavigationView
 
         setSupportActionBar(mToolbar)
 
+        val toggle = ActionBarDrawerToggle(
+                this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        mDrawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
         initTabs()
         startsMainPresenter()
+    }
+
+    override fun onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
     }
 
     private fun initTabs() {
@@ -86,15 +108,24 @@ class MainActivity : BaseMvp, AppCompatActivity() {
         mMainPresenter = MainPresenter()
     }
 
-    override fun configToolbar(backButton: Boolean) {
+    override fun configToolbar(type: UITypes) {
 
-        if (backButton) {
-            mToolbar.navigationIcon = resources.getDrawable(R.mipmap.back_arrow)
-            mToolbar.setNavigationOnClickListener {
-                onBackPressed()
+        when (type) {
+            UITypes.WITH_BACK_BUTTON -> {
+                mToolbar.navigationIcon = resources.getDrawable(R.mipmap.back_arrow)
+                mToolbar.setNavigationOnClickListener {
+                    onBackPressed()
+                }
             }
-        } else {
-            mToolbar.navigationIcon = null
+            UITypes.WITH_NAVIGATION -> {
+                mToolbar.navigationIcon = resources.getDrawable(R.mipmap.burger)
+                mToolbar.setNavigationOnClickListener {
+                    if (!mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+                        mDrawerLayout.openDrawer(GravityCompat.START)
+                    }
+                }
+            }
+
         }
     }
 

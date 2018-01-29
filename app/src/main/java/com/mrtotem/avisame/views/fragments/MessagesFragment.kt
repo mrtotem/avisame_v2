@@ -46,13 +46,18 @@ class MessagesFragment : BaseFragment() {
         super.onResume()
         mHomeMvp?.setToolbarTitle(getString(R.string.title_messages))
 
-        val messages: ArrayList<String>? = null
-        mMessageList.adapter = MessagesAdapter(activity, messages)
+        refreshAdapter()
     }
 
     private fun configRecycler() {
 
         mMessageList.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
+    }
+
+    private fun refreshAdapter(){
+
+        val messages: ArrayList<String>? = null
+        mMessageList.adapter = MessagesAdapter(activity, messages)
     }
 
     companion object {
