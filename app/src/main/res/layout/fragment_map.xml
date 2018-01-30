@@ -33,7 +33,7 @@
                 android:orientation="vertical">
 
                 <com.mrtotem.avisame.widgets.AvisameTextView
-                    android:id="@+id/message_title"
+                    android:id="@+id/tracking_username"
                     style="@style/AvisameDigitaltTextLightMedium"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -42,7 +42,7 @@
                     android:text="Tracking a John Fruciante" />
 
                 <com.mrtotem.avisame.widgets.AvisameTextView
-                    android:id="@+id/message_date"
+                    android:id="@+id/tracking_selected_street"
                     style="@style/AvisameDigitaltTextLightSmall"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -51,7 +51,7 @@
                     android:text="Destino: Pasco 383" />
 
                 <com.mrtotem.avisame.widgets.AvisameTextView
-                    android:id="@+id/message_description"
+                    android:id="@+id/tracking_phone_status"
                     style="@style/AvisameDigitaltTextLightSmall"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -68,7 +68,7 @@
                 android:orientation="vertical">
 
                 <com.facebook.drawee.view.SimpleDraweeView
-                    android:id="@+id/user_avatar"
+                    android:id="@+id/tracking_user_avatar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     fresco:actualImageResource="@mipmap/avatar_example"
