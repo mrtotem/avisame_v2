@@ -15,7 +15,7 @@
         android:scaleType="centerInside"
         android:src="@mipmap/profile_icon" />
 
-    <widgets.AvisameTextView
+    <com.mrtotem.avisame.widgets.AvisameTextView
         android:id="@+id/nav_label"
         style="@style/AvisameDigitaltTextDarkMedium"
         android:layout_width="wrap_content"

@@ -1,6 +1,8 @@
 package com.mrtotem.avisame.presenters
 
+import android.content.Intent
 import com.mrtotem.avisame.enums.NavOptions
+import com.mrtotem.avisame.views.activities.ProfileActivity
 import com.mrtotem.avisame.views.adapters.NavigationViewAdapter
 import com.mrtotem.avisame.views.interfaces.BaseMvp
 
@@ -15,6 +17,7 @@ class MainPresenter : BasePresenter<BaseMvp>(), NavigationViewAdapter.OnNavigati
         when (option) {
             NavOptions.PROFILE -> {
                 view!!.onDrawerClose()
+                view!!.getContext().startActivity(Intent(view!!.getContext(), ProfileActivity::class.java))
             }
 
             NavOptions.LOGOUT -> {

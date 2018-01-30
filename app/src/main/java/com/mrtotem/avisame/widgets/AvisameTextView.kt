@@ -1,4 +1,4 @@
-package widgets
+package com.mrtotem.avisame.widgets
 
 import android.content.Context
 import android.graphics.Typeface

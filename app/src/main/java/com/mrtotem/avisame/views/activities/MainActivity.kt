@@ -62,18 +62,18 @@ class MainActivity : AppCompatActivity(), BaseMvp {
 
     private fun initTabs() {
 
-        mTabLayout.addTab(mTabLayout.newTab().setIcon(resources.getDrawable(R.mipmap.action)))
-        mTabLayout.addTab(mTabLayout.newTab().setIcon(resources.getDrawable(R.mipmap.message_unselected)))
-        mTabLayout.addTab(mTabLayout.newTab().setIcon(resources.getDrawable(R.mipmap.friends_unselected)))
+        mTabLayout.addTab(mTabLayout.newTab().setIcon(getDrawable(R.mipmap.action)))
+        mTabLayout.addTab(mTabLayout.newTab().setIcon(getDrawable(R.mipmap.message_unselected)))
+        mTabLayout.addTab(mTabLayout.newTab().setIcon(getDrawable(R.mipmap.friends_unselected)))
 
         openSection(mTabLayout.getTabAt(0))
 
         mTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab!!.position) {
-                    0 -> tab.icon = resources.getDrawable(R.mipmap.action)
-                    1 -> tab.icon = resources.getDrawable(R.mipmap.message)
-                    2 -> tab.icon = resources.getDrawable(R.mipmap.friends)
+                    0 -> tab.icon = getDrawable(R.mipmap.action)
+                    1 -> tab.icon = getDrawable(R.mipmap.message)
+                    2 -> tab.icon = getDrawable(R.mipmap.friends)
                 }
                 openSection(tab)
             }
@@ -84,9 +84,9 @@ class MainActivity : AppCompatActivity(), BaseMvp {
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
                 when (tab!!.position) {
-                    0 -> tab.icon = resources.getDrawable(R.mipmap.action_unselected)
-                    1 -> tab.icon = resources.getDrawable(R.mipmap.message_unselected)
-                    2 -> tab.icon = resources.getDrawable(R.mipmap.friends_unselected)
+                    0 -> tab.icon = getDrawable(R.mipmap.action_unselected)
+                    1 -> tab.icon = getDrawable(R.mipmap.message_unselected)
+                    2 -> tab.icon = getDrawable(R.mipmap.friends_unselected)
                 }
             }
         })
@@ -128,13 +128,13 @@ class MainActivity : AppCompatActivity(), BaseMvp {
 
         when (type) {
             UITypes.WITH_BACK_BUTTON -> {
-                mToolbar.navigationIcon = resources.getDrawable(R.mipmap.back_arrow)
+                mToolbar.navigationIcon = getDrawable(R.mipmap.back_arrow)
                 mToolbar.setNavigationOnClickListener {
                     onBackPressed()
                 }
             }
             UITypes.WITH_NAVIGATION -> {
-                mToolbar.navigationIcon = resources.getDrawable(R.mipmap.burger)
+                mToolbar.navigationIcon = getDrawable(R.mipmap.burger)
                 mToolbar.setNavigationOnClickListener {
                     if (!mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
                         mDrawerLayout.openDrawer(GravityCompat.START)

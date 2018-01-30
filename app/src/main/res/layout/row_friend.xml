@@ -20,7 +20,7 @@
             fresco:placeholderImage="@mipmap/avatar_example"
             fresco:roundAsCircle="true" />
 
-        <widgets.AvisameTextView
+        <com.mrtotem.avisame.widgets.AvisameTextView
             android:id="@+id/friend_name"
             style="@style/AvisameDigitaltTextDarkSmall"
             android:layout_width="match_parent"

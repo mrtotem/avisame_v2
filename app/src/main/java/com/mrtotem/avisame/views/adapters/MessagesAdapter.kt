@@ -10,7 +10,7 @@ import com.facebook.drawee.view.SimpleDraweeView
 import com.mrtotem.avisame.R
 import com.mrtotem.avisame.utils.ImageUtils
 import org.joda.time.DateTime
-import widgets.AvisameTextView
+import com.mrtotem.avisame.widgets.AvisameTextView
 import java.util.*
 
 /**

@@ -10,7 +10,7 @@ import com.facebook.drawee.view.SimpleDraweeView
 import com.mrtotem.avisame.R
 import com.mrtotem.avisame.enums.NavOptions
 import com.mrtotem.avisame.utils.ImageUtils
-import widgets.AvisameTextView
+import com.mrtotem.avisame.widgets.AvisameTextView
 
 /**
  * Created by Octavio on 29/01/2018.

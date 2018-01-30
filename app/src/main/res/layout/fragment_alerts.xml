@@ -36,7 +36,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2">
 
-                <widgets.AvisameTextView
+                <com.mrtotem.avisame.widgets.AvisameTextView
                     android:id="@+id/arrived_text"
                     style="@style/AvisameDigitaltTextDarkLarge"
                     android:layout_width="match_parent"
@@ -91,7 +91,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2">
 
-                <widgets.AvisameTextView
+                <com.mrtotem.avisame.widgets.AvisameTextView
                     android:id="@+id/alert_text"
                     style="@style/AvisameDigitaltTextDarkLarge"
                     android:layout_width="match_parent"
@@ -146,7 +146,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2">
 
-                <widgets.AvisameTextView
+                <com.mrtotem.avisame.widgets.AvisameTextView
                     android:id="@+id/danger_text"
                     style="@style/AvisameDigitaltTextDarkLarge"
                     android:layout_width="match_parent"
@@ -202,7 +202,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2">
 
-                <widgets.AvisameTextView
+                <com.mrtotem.avisame.widgets.AvisameTextView
                     android:id="@+id/tracking_text"
                     style="@style/AvisameDigitaltTextDarkLarge"
                     android:layout_width="match_parent"
