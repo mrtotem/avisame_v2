@@ -27,6 +27,18 @@
         <item name="android:textColor">@color/colorTextDark</item>
     </style>
 
+    <style name="AvisameDigitaltTextLightMedium">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/colorTextLight</item>
+    </style>
+
+    <style name="AvisameDigitaltTextLightSmall">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/colorTextLight</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

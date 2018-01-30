@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,5 +16,66 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_alignParentTop="true"
-        android:background="@color/colorDarkTransparent" />
+        android:background="@color/colorDarkTransparent"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:orientation="vertical">
+
+                <com.mrtotem.avisame.widgets.AvisameTextView
+                    android:id="@+id/message_title"
+                    style="@style/AvisameDigitaltTextLightMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:text="Tracking a John Fruciante" />
+
+                <com.mrtotem.avisame.widgets.AvisameTextView
+                    android:id="@+id/message_date"
+                    style="@style/AvisameDigitaltTextLightSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Destino: Pasco 383" />
+
+                <com.mrtotem.avisame.widgets.AvisameTextView
+                    android:id="@+id/message_description"
+                    style="@style/AvisameDigitaltTextLightSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="top"
+                    android:lines="1"
+                    android:text="@string/example_tracking" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/user_avatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    fresco:actualImageResource="@mipmap/avatar_example"
+                    fresco:actualImageScaleType="centerInside"
+                    fresco:placeholderImage="@mipmap/avatar_example"
+                    fresco:roundAsCircle="true" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

@@ -10,6 +10,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.mrtotem.avisame.R
@@ -99,10 +100,12 @@ class AvisameMapFragment : OnMapReadyCallback, BaseFragment() {
     }
 
     private fun showMap(map: GoogleMap?) {
-        val sydney = LatLng(-33.852, 151.211)
+        val sydney = LatLng(-32.9614853, -60.6316771)
         map?.addMarker(MarkerOptions().position(sydney)
-                .title("Marker in Sydney"))
+                .title("Tracking")
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher)))
         map?.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        map?.animateCamera(CameraUpdateFactory.zoomTo(15F), 2000, null)
     }
 
     companion object {

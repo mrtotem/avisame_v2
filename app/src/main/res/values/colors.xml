@@ -15,5 +15,5 @@
     <color name="colorAlerta">#F7DC6F</color>
     <color name="colorPeligro">#EC7063</color>
     <color name="colorTracking">#8E44AD</color>
-    <color name="colorDarkTransparent">#60000000</color>
+    <color name="colorDarkTransparent">#B3000000</color>
 </resources>
