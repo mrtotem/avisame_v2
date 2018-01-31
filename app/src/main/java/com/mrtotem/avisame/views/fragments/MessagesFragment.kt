@@ -17,6 +17,7 @@ class MessagesFragment : BaseFragment() {
     private var mParam2: String? = null
 
     private lateinit var mMessageList: RecyclerView
+    private lateinit var mMessagesAdapter: MessagesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,10 +55,12 @@ class MessagesFragment : BaseFragment() {
         mMessageList.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
     }
 
-    private fun refreshAdapter(){
+    private fun refreshAdapter() {
 
-        val messages: ArrayList<String>? = null
-        mMessageList.adapter = MessagesAdapter(activity, messages)
+        mMessagesAdapter = MessagesAdapter(activity)
+        mHomeMvp?.getMessagePresenter()?.registerMessageListener(mMessagesAdapter)
+        mMessageList.adapter = mMessagesAdapter
+
     }
 
     companion object {

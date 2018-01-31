@@ -13,6 +13,7 @@ import android.view.View
 import com.mrtotem.avisame.R
 import com.mrtotem.avisame.enums.UITypes
 import com.mrtotem.avisame.presenters.MainPresenter
+import com.mrtotem.avisame.presenters.MessagesPresenter
 import com.mrtotem.avisame.views.fragments.AlertsFragment
 import com.mrtotem.avisame.views.fragments.FriendsFragment
 import com.mrtotem.avisame.views.fragments.MessagesFragment
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity(), BaseMvp {
     private lateinit var mNavigationView: RecyclerView
     private lateinit var mDrawerLayout: DrawerLayout
     private lateinit var mMainPresenter: MainPresenter
+    private lateinit var mMessagesPresenter: MessagesPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +38,10 @@ class MainActivity : AppCompatActivity(), BaseMvp {
         mNavigationView = findViewById<RecyclerView>(R.id.nav_view) as RecyclerView
 
         setSupportActionBar(mToolbar)
+
         initMainPresenter()
+        initMessagesPresenter()
+
         initNavView()
         initTabs()
     }
@@ -116,6 +121,12 @@ class MainActivity : AppCompatActivity(), BaseMvp {
         mMainPresenter.attachView(this)
     }
 
+    private fun initMessagesPresenter() {
+
+        mMessagesPresenter = MessagesPresenter()
+        mMessagesPresenter.attachView(this)
+    }
+
     override fun onDrawerClose() {
         mDrawerLayout.closeDrawer(GravityCompat.START)
     }
@@ -147,5 +158,9 @@ class MainActivity : AppCompatActivity(), BaseMvp {
 
     override fun setToolbarTitle(title: String) {
         mToolbar.title = title
+    }
+
+    override fun getMessagePresenter(): MessagesPresenter {
+        return mMessagesPresenter
     }
 }

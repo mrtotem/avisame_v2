@@ -1,6 +1,7 @@
 package com.mrtotem.avisame.views.interfaces
 
 import com.mrtotem.avisame.enums.UITypes
+import com.mrtotem.avisame.presenters.MessagesPresenter
 import com.mrtotem.avisame.views.activities.MainActivity
 
 /**
@@ -15,4 +16,6 @@ interface BaseMvp {
     fun getContext(): MainActivity
 
     fun onDrawerClose()
+
+    fun getMessagePresenter(): MessagesPresenter
 }

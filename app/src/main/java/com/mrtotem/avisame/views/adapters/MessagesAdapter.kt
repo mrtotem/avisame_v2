@@ -8,16 +8,23 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.facebook.drawee.view.SimpleDraweeView
 import com.mrtotem.avisame.R
+import com.mrtotem.avisame.models.Message
 import com.mrtotem.avisame.utils.ImageUtils
-import org.joda.time.DateTime
+import com.mrtotem.avisame.views.interfaces.MessageMvp
 import com.mrtotem.avisame.widgets.AvisameTextView
+import org.joda.time.DateTime
 import java.util.*
 
 /**
  * Created by Octavio on 29/01/2018.
  */
-class MessagesAdapter(val context: Context, val userList: ArrayList<String>?) : RecyclerView.Adapter<MessagesAdapter.MessageVH>() {
+class MessagesAdapter(val context: Context) : RecyclerView.Adapter<MessagesAdapter.MessageVH>(), MessageMvp {
 
+    var messages: ArrayList<Message> = arrayListOf()
+
+    override fun refreshMessages(messages: ArrayList<Message>) {
+        this.messages = messages
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MessageVH {
         val v = LayoutInflater.from(parent?.context).inflate(R.layout.row_message, parent, false)
@@ -25,7 +32,7 @@ class MessagesAdapter(val context: Context, val userList: ArrayList<String>?) : 
     }
 
     override fun getItemCount(): Int {
-        return 12
+        return messages.size
     }
 
     override fun onBindViewHolder(holder: MessageVH?, position: Int) {
