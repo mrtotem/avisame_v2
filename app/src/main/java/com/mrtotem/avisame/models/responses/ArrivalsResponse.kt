@@ -7,13 +7,13 @@ import com.mrtotem.avisame.models.Message
  */
 class ArrivalsResponse {
 
-    private var arrivals: List<Message>
+    private var arrivals: ArrayList<Message>
 
-    fun getArrivals(): List<Message> {
+    fun getArrivals(): ArrayList<Message> {
         return arrivals
     }
 
-    constructor (arrivals: List<Message>) {
+    constructor (arrivals: ArrayList<Message>) {
         this.arrivals = arrivals
     }
 }

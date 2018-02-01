@@ -1,6 +1,7 @@
 package com.mrtotem.avisame.managers
 
 import com.mrtotem.avisame.http.AvisameApiClient
+import com.mrtotem.avisame.http.catalogs.ArrivedCatalog
 import com.mrtotem.avisame.http.interfaces.MessagesService
 import com.mrtotem.avisame.models.Message
 import com.mrtotem.avisame.models.responses.ArrivalsResponse
@@ -10,28 +11,18 @@ import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 /**
  * Created by Octavio on 26/01/2018.
  */
 
-class MessagesManager private constructor() : Callback<ArrivalsResponse> {
-
-    override fun onFailure(call: Call<ArrivalsResponse>?, t: Throwable?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun onResponse(call: Call<ArrivalsResponse>?, response: Response<ArrivalsResponse>?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+class MessagesManager private constructor() {
 
     private val messagesGetterSubject: PublishSubject<SubjectItem<Boolean>> = PublishSubject.create()
-    private var messagesService: MessagesService? = null
+    private val arrivedCatalog: ArrivedCatalog = ArrivedCatalog()
 
+    private var messagesService: MessagesService? = null
     var messages: ArrayList<Message> = arrayListOf()
-    var arrivedMessages: ArrayList<Message> = arrayListOf()
     var alertMessages: ArrayList<Message> = arrayListOf()
     var dangerMessages: ArrayList<Message> = arrayListOf()
 
@@ -71,6 +62,12 @@ class MessagesManager private constructor() : Callback<ArrivalsResponse> {
     fun fetchLastestMessages() {
 
         var arrivalsCall: Call<ArrivalsResponse>? = messagesService?.getArrivalMessages("", "", "")
-        arrivalsCall?.enqueue(this)
+        arrivalsCall?.enqueue(arrivedCatalog)
+
+        var arrivalsCall: Call<ArrivalsResponse>? = messagesService?.getArrivalMessages("", "", "")
+        arrivalsCall?.enqueue(arrivedCatalog)
+
+        var arrivalsCall: Call<ArrivalsResponse>? = messagesService?.getArrivalMessages("", "", "")
+        arrivalsCall?.enqueue(arrivedCatalog)
     }
 }
