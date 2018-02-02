@@ -2,6 +2,7 @@ package com.mrtotem.avisame
 
 import android.app.Application
 import com.facebook.drawee.backends.pipeline.Fresco
+import com.mrtotem.avisame.managers.MessagesManager
 
 
 /**
@@ -14,5 +15,6 @@ class AvisameApplication : Application() {
         super.onCreate()
 
         Fresco.initialize(this)
+        MessagesManager.getInstance().init()
     }
 }

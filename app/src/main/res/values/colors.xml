@@ -10,6 +10,7 @@
     <color name="colorTabElementSelected">#58D68D</color>
     <color name="colorTabElementUnselected">#EBEDEF</color>
     <color name="colorBackgroundLight">#F8F9F9</color>
+    <color name="colorAppEndGradiend">#66de68</color>
 
     <color name="colorLlegue">#2ECC71</color>
     <color name="colorAlerta">#F7DC6F</color>

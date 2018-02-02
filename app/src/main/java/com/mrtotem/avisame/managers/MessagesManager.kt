@@ -23,8 +23,6 @@ class MessagesManager private constructor() {
 
     private var messagesService: MessagesService? = null
     var messages: ArrayList<Message> = arrayListOf()
-    var alertMessages: ArrayList<Message> = arrayListOf()
-    var dangerMessages: ArrayList<Message> = arrayListOf()
 
     init {
         /*
@@ -61,13 +59,12 @@ class MessagesManager private constructor() {
 
     fun fetchLastestMessages() {
 
-        var arrivalsCall: Call<ArrivalsResponse>? = messagesService?.getArrivalMessages("", "", "")
-        arrivalsCall?.enqueue(arrivedCatalog)
-
-        var arrivalsCall: Call<ArrivalsResponse>? = messagesService?.getArrivalMessages("", "", "")
-        arrivalsCall?.enqueue(arrivedCatalog)
-
-        var arrivalsCall: Call<ArrivalsResponse>? = messagesService?.getArrivalMessages("", "", "")
+        val arrivalsCall: Call<ArrivalsResponse>? = messagesService?.getArrivalMessages("", "", "")
+        arrivedCatalog.subscribeToArrivalsSubject(Consumer {
+            if (it) {
+                messagesGetterSubject.onNext(SubjectItem(null, true))
+            }
+        })
         arrivalsCall?.enqueue(arrivedCatalog)
     }
 }

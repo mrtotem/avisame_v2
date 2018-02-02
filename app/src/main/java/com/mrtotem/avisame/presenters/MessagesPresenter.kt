@@ -27,6 +27,10 @@ class MessagesPresenter : BasePresenter<BaseMvp>() {
         })
     }
 
+    fun fetchMessages() {
+        MessagesManager.getInstance().fetchLastestMessages()
+    }
+
     fun registerMessageListener(listener: MessageMvp) {
         mListener = listener
     }
