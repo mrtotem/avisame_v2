@@ -9,6 +9,22 @@
         <item name="android:windowDisablePreview">true</item>
     </style>
 
+    <style name="FullScreenTheme" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="EditTextBase">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="AvisameDigitaltEditableDarkMedium" parent="EditTextBase">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColorHint">@color/colorTextDark</item>
+        <item name="android:textColor">@color/colorTextDark</item>
+    </style>
+
     <style name="AvisameDigitaltTextDarkLarge">
         <item name="android:textSize">25sp</item>
         <item name="android:textStyle">bold</item>

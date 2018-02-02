@@ -32,7 +32,7 @@ class MessagesAdapter(val context: Context) : RecyclerView.Adapter<MessagesAdapt
     }
 
     override fun getItemCount(): Int {
-        return messages.size
+        return 14
     }
 
     override fun onBindViewHolder(holder: MessageVH?, position: Int) {
@@ -57,7 +57,7 @@ class MessagesAdapter(val context: Context) : RecyclerView.Adapter<MessagesAdapt
             messageTitle.text = "Mensaje de llegada"
             message.text = String.format(Locale.US, "Mensaje: %s", newMessage)
             messageDate.text = String.format(Locale.US, "Fecha: %s", DateTime().toString("dd-mm-yyyy hh:mm aaa"))
-            avatar.controller = ImageUtils().processImage(null, 128, 128)
+            avatar.controller = ImageUtils().processImage(null, 48, 48)
         }
     }
 }

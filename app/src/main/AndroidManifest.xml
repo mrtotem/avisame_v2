@@ -37,7 +37,9 @@
             android:name=".views.activities.ProfileActivity"
             android:label="@string/title_activity_profile"
             android:theme="@style/AppTheme" />
-        <activity android:name=".views.activities.LoginActivity">
+        <activity
+            android:name=".views.activities.LoginActivity"
+            android:theme="@style/FullScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

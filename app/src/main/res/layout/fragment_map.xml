@@ -71,9 +71,9 @@
                     android:id="@+id/tracking_user_avatar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    fresco:actualImageResource="@mipmap/avatar_example"
+                    fresco:actualImageResource="@mipmap/avatar_example_good"
                     fresco:actualImageScaleType="centerInside"
-                    fresco:placeholderImage="@mipmap/avatar_example"
+                    fresco:placeholderImage="@mipmap/avatar_example_good"
                     fresco:roundAsCircle="true" />
             </RelativeLayout>
         </LinearLayout>

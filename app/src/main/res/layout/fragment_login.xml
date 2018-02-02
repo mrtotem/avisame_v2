@@ -9,12 +9,22 @@
         android:padding="40dp">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="30dp"
+            android:src="@mipmap/app_logo" />
+
+        <com.mrtotem.avisame.widgets.AvisameTextView
+            style="@style/AvisameDigitaltTextDarkMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="50dp"
-            android:layout_marginTop="50dp"
-            android:src="@mipmap/app_logo" />
+            android:text="AVISAME!"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,9 +32,9 @@
             android:layout_marginBottom="10dp"
             android:orientation="vertical">
 
-            <com.mrtotem.avisame.widgets.AvisameTextView
+            <com.mrtotem.avisame.widgets.AvisameEditView
                 android:id="@+id/username"
-                style="@style/AvisameDigitaltTextLightMedium"
+                style="@style/AvisameDigitaltEditableDarkMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -35,7 +45,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorPrimaryLight" />
+                android:background="@color/colorToolbar" />
         </LinearLayout>
 
         <LinearLayout
@@ -44,9 +54,9 @@
             android:layout_marginBottom="20dp"
             android:orientation="vertical">
 
-            <com.mrtotem.avisame.widgets.AvisameTextView
+            <com.mrtotem.avisame.widgets.AvisameEditView
                 android:id="@+id/password"
-                style="@style/AvisameDigitaltTextLightMedium"
+                style="@style/AvisameDigitaltEditableDarkMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -58,7 +68,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorPrimaryLight" />
+                android:background="@color/colorToolbar" />
         </LinearLayout>
 
         <LinearLayout
@@ -70,18 +80,18 @@
             android:padding="10dp">
 
             <Button
-                android:id="@+id/sign_in_button"
+                android:id="@+id/button_login"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="10dp"
-                android:background="@color/colorPrimaryLight"
+                android:background="@color/colorLlegue"
                 android:gravity="center"
                 android:text="LOGIN"
-                android:textColor="@color/colorTextDark" />
+                android:textColor="@color/colorTextLight" />
         </LinearLayout>
 
         <com.mrtotem.avisame.widgets.AvisameTextView
-            android:id="@+id/forgot_password"
+            android:id="@+id/button_register"
             style="@style/AvisameDigitaltTextDarkMedium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -15,9 +15,9 @@
         android:id="@+id/avatar"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        fresco:actualImageResource="@mipmap/avatar_example"
+        fresco:actualImageResource="@mipmap/avatar_example_good"
         fresco:actualImageScaleType="centerInside"
-        fresco:placeholderImage="@mipmap/avatar_example"
+        fresco:placeholderImage="@mipmap/avatar_example_good"
         fresco:roundAsCircle="true" />
 
     <com.mrtotem.avisame.widgets.AvisameTextView
