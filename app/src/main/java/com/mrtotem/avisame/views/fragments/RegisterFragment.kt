@@ -2,6 +2,7 @@ package com.mrtotem.avisame.views.fragments
 
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.text.Spannable
@@ -12,14 +13,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+
 import com.mrtotem.avisame.R
 import com.mrtotem.avisame.views.activities.MainActivity
 import com.mrtotem.avisame.widgets.AvisameTextView
 
-class LoginFragment : Fragment() {
+class RegisterFragment : Fragment() {
 
-    lateinit var mRegister: AvisameTextView
-    lateinit var mLogin: Button
+    lateinit var mTermsAndConditions: AvisameTextView
+    lateinit var mRegister: Button
 
     private var mParam1: String? = null
     private var mParam2: String? = null
@@ -35,10 +37,10 @@ class LoginFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val v: View = inflater!!.inflate(R.layout.fragment_login, container, false)
+        val v: View = inflater!!.inflate(R.layout.fragment_register, container, false)
 
-        mRegister = v.findViewById<AvisameTextView>(R.id.button_register) as AvisameTextView
-        mLogin = v.findViewById<Button>(R.id.button_login) as Button
+        mTermsAndConditions = v.findViewById<AvisameTextView>(R.id.terms_conditions) as AvisameTextView
+        mRegister = v.findViewById<Button>(R.id.button_register) as Button
 
         return v
     }
@@ -49,24 +51,16 @@ class LoginFragment : Fragment() {
         setupView()
     }
 
-    fun setupView() {
+    private fun setupView() {
 
-        val sb = SpannableStringBuilder("No tenés una cuenta? Registrate acá")
+        val sb = SpannableStringBuilder("Al registrarme acepto términos y condiciones")
         val fcs = ForegroundColorSpan(resources.getColor(R.color.colorToolbar))
-        val bss = StyleSpan(android.graphics.Typeface.NORMAL)
-        sb.setSpan(fcs, 21, mRegister.text.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
-        sb.setSpan(bss, 21, mRegister.text.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
-        mRegister.text = sb
+        val bss = StyleSpan(Typeface.NORMAL)
+        sb.setSpan(fcs, 22, mTermsAndConditions.text.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+        sb.setSpan(bss, 22, mTermsAndConditions.text.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+        mTermsAndConditions.text = sb
 
-        mRegister.setOnClickListener {
-            activity.supportFragmentManager.beginTransaction()
-                    .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left)
-                    .addToBackStack(LoginFragment::class.java.name)
-                    .replace(R.id.main_content, RegisterFragment.newInstance("", ""))
-                    .commit()
-        }
-
-        mLogin.setOnClickListener({
+        mTermsAndConditions.setOnClickListener({
             startActivity(Intent(activity, MainActivity::class.java))
             activity.finish()
         })
@@ -77,8 +71,8 @@ class LoginFragment : Fragment() {
         private val ARG_PARAM1 = "param1"
         private val ARG_PARAM2 = "param2"
 
-        fun newInstance(param1: String, param2: String): LoginFragment {
-            val fragment = LoginFragment()
+        fun newInstance(param1: String, param2: String): RegisterFragment {
+            val fragment = RegisterFragment()
             val args = Bundle()
             args.putString(ARG_PARAM1, param1)
             args.putString(ARG_PARAM2, param2)
@@ -86,4 +80,5 @@ class LoginFragment : Fragment() {
             return fragment
         }
     }
+
 }

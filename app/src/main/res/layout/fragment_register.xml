@@ -1,0 +1,128 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="40dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <com.mrtotem.avisame.widgets.AvisameEditView
+                android:id="@+id/username"
+                style="@style/AvisameDigitaltEditableDarkMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:gravity="start|center_vertical"
+                android:hint="Usuario"
+                android:padding="2dp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorToolbar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <com.mrtotem.avisame.widgets.AvisameEditView
+                android:id="@+id/email"
+                style="@style/AvisameDigitaltEditableDarkMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:gravity="start|center_vertical"
+                android:hint="Email"
+                android:padding="2dp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorToolbar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
+
+            <com.mrtotem.avisame.widgets.AvisameEditView
+                android:id="@+id/password"
+                style="@style/AvisameDigitaltEditableDarkMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:gravity="start|center_vertical"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                android:padding="2dp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorToolbar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
+
+            <com.mrtotem.avisame.widgets.AvisameEditView
+                android:id="@+id/repeat_password"
+                style="@style/AvisameDigitaltEditableDarkMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:gravity="start|center_vertical"
+                android:hint="Repetir contraseña"
+                android:inputType="textPassword"
+                android:padding="2dp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorToolbar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <Button
+                android:id="@+id/button_register"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/colorLlegue"
+                android:gravity="center"
+                android:text="REGISTRARSE"
+                android:textColor="@color/colorTextLight" />
+        </LinearLayout>
+
+        <com.mrtotem.avisame.widgets.AvisameTextView
+            android:id="@+id/terms_conditions"
+            style="@style/AvisameDigitaltTextDarkMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp" />
+    </LinearLayout>
+</ScrollView>
