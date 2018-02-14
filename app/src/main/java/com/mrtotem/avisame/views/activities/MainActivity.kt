@@ -17,6 +17,7 @@ import com.mrtotem.avisame.presenters.MessagesPresenter
 import com.mrtotem.avisame.views.fragments.AlertsFragment
 import com.mrtotem.avisame.views.fragments.FriendsFragment
 import com.mrtotem.avisame.views.fragments.MessagesFragment
+import com.mrtotem.avisame.views.fragments.base.TabFragment
 import com.mrtotem.avisame.views.interfaces.BaseMvp
 
 class MainActivity : AppCompatActivity(), BaseMvp {
@@ -50,7 +51,12 @@ class MainActivity : AppCompatActivity(), BaseMvp {
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             mDrawerLayout.closeDrawer(GravityCompat.START)
         } else {
-            super.onBackPressed()
+            val frag = supportFragmentManager.findFragmentById(R.id.main_content)
+            if (frag is TabFragment) {
+                finish()
+            } else {
+                super.onBackPressed()
+            }
         }
     }
 

@@ -4,11 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import com.mrtotem.avisame.R
-import com.mrtotem.avisame.views.fragments.base.BaseFragment
+import com.mrtotem.avisame.views.fragments.base.TabFragment
 
-class AlertsFragment : BaseFragment() {
+class AlertsFragment : TabFragment() {
 
     private var mParam1: String? = null
     private var mParam2: String? = null
@@ -17,7 +16,6 @@ class AlertsFragment : BaseFragment() {
     private lateinit var mAlertButton: View
     private lateinit var mDangerButton: View
     private lateinit var mTrackingButton: View
-    private lateinit var mTrackingIcon: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,13 +28,12 @@ class AlertsFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val v: View = inflater!!.inflate(R.layout.fragment_alerts, container, false) as View
+        val v: View = inflater!!.inflate(R.layout.fragment_alerts_v2, container, false) as View
 
         mArrivedButton = v.findViewById<View>(R.id.arrived_button)
         mAlertButton = v.findViewById<View>(R.id.alert_button)
         mDangerButton = v.findViewById<View>(R.id.danger_button)
         mTrackingButton = v.findViewById<View>(R.id.tracking_button)
-        mTrackingIcon = v.findViewById<ImageView>(R.id.tracking_icon)
 
         return v
     }

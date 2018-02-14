@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.mrtotem.avisame.R
 import com.mrtotem.avisame.views.adapters.FriendsAdapter
-import com.mrtotem.avisame.views.fragments.base.BaseFragment
+import com.mrtotem.avisame.views.fragments.base.TabFragment
 
-class FriendsFragment : BaseFragment() {
+class FriendsFragment : TabFragment() {
 
     private var mParam1: String? = null
     private var mParam2: String? = null

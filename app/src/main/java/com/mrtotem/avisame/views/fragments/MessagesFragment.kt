@@ -9,9 +9,9 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.mrtotem.avisame.R
 import com.mrtotem.avisame.views.adapters.MessagesAdapter
-import com.mrtotem.avisame.views.fragments.base.BaseFragment
+import com.mrtotem.avisame.views.fragments.base.TabFragment
 
-class MessagesFragment : BaseFragment() {
+class MessagesFragment : TabFragment() {
 
     private var mParam1: String? = null
     private var mParam2: String? = null
