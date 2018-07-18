@@ -5,6 +5,8 @@ package com.mrtotem.avisame.enums
  */
 enum class NavOptions {
 
+    LOGIN,
+    HOME,
     PROFILE,
     LOGOUT
 }

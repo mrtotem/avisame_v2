@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#770306</color>
+    <color name="colorPrimary">#58D68D</color>
     <color name="colorPrimaryDark">#6f2b39</color>
     <color name="colorPrimaryLight">#FFFFFF</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorTextDark">#566573</color>
     <color name="colorTextLight">#EBEDEF</color>
     <color name="colorToolbar">#58D68D</color>
+    <color name="colorLoadingBackground">#80000000</color>
     <color name="colorTabElementSelected">#58D68D</color>
     <color name="colorTabElementUnselected">#EBEDEF</color>
     <color name="colorBackgroundLight">#F8F9F9</color>

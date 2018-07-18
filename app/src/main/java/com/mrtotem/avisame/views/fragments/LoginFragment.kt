@@ -3,9 +3,11 @@ package com.mrtotem.avisame.views.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import android.support.design.widget.Snackbar
+import android.text.Editable
 import android.text.Spannable
 import android.text.SpannableStringBuilder
+import android.text.TextWatcher
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.view.LayoutInflater
@@ -13,32 +15,47 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.mrtotem.avisame.R
+import com.mrtotem.avisame.contracts.OnBoardingContract
+import com.mrtotem.avisame.models.views.LoginViewModel
+import com.mrtotem.avisame.utils.NavigationUtils
 import com.mrtotem.avisame.views.activities.MainActivity
+import com.mrtotem.avisame.views.fragments.base.BaseFragment
+import com.mrtotem.avisame.widgets.AvisameEditView
 import com.mrtotem.avisame.widgets.AvisameTextView
 
-class LoginFragment : Fragment() {
+class LoginFragment :
+        BaseFragment(),
+        OnBoardingContract.Navigator,
+        OnBoardingContract.View {
+
+    override fun navigateToRegister() {
+        NavigationUtils.replaceFragmentOnActivityBackstack(
+                activity.supportFragmentManager,
+                RegisterFragment(),
+                R.id.main_content)
+    }
+
+    override fun navigateToMain() {
+        startActivity(Intent(activity, MainActivity::class.java))
+        activity.finish()
+    }
 
     lateinit var mRegister: AvisameTextView
     lateinit var mLogin: Button
+    lateinit var mUsername: AvisameEditView
+    lateinit var mPassword: AvisameEditView
 
-    private var mParam1: String? = null
-    private var mParam2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        if (arguments != null) {
-            mParam1 = arguments.getString(ARG_PARAM1)
-            mParam2 = arguments.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var loginView: LoginViewModel
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val v: View = inflater!!.inflate(R.layout.fragment_login, container, false)
 
-        mRegister = v.findViewById<AvisameTextView>(R.id.button_register) as AvisameTextView
-        mLogin = v.findViewById<Button>(R.id.button_login) as Button
+        mRegister = v.findViewById(R.id.button_register) as AvisameTextView
+        mUsername = v.findViewById(R.id.username) as AvisameEditView
+        mPassword = v.findViewById(R.id.password) as AvisameEditView
+        mLogin = v.findViewById(R.id.button_login) as Button
 
         return v
     }
@@ -46,44 +63,61 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        loginView = LoginViewModel(this.view!!, this)
         setupView()
     }
 
-    fun setupView() {
+    private fun setupView() {
 
         val sb = SpannableStringBuilder("No tenés una cuenta? Registrate acá")
-        val fcs = ForegroundColorSpan(resources.getColor(R.color.colorToolbar))
-        val bss = StyleSpan(android.graphics.Typeface.NORMAL)
-        sb.setSpan(fcs, 21, mRegister.text.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
-        sb.setSpan(bss, 21, mRegister.text.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+
+        sb.setSpan(ForegroundColorSpan(
+                resources.getColor(R.color.colorToolbar)),
+                21, mRegister.text.length,
+                Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+        sb.setSpan(
+                StyleSpan(android.graphics.Typeface.NORMAL),
+                21,
+                mRegister.text.length,
+                Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+
         mRegister.text = sb
 
         mRegister.setOnClickListener {
-            activity.supportFragmentManager.beginTransaction()
-                    .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left)
-                    .addToBackStack(LoginFragment::class.java.name)
-                    .replace(R.id.main_content, RegisterFragment.newInstance("", ""))
-                    .commit()
+            navigateToRegister()
         }
 
-        mLogin.setOnClickListener({
-            startActivity(Intent(activity, MainActivity::class.java))
-            activity.finish()
+        mLogin.setOnClickListener {
+            loginView.login()?.let {
+                this.view?.let { view ->
+                    Snackbar.make(view, it, Snackbar.LENGTH_SHORT)
+                            .show()
+                }
+            }
+        }
+
+        mUsername.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                p0?.let { loginView.updateUsername(it) }
+            }
         })
-    }
 
-    companion object {
+        mPassword.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+            }
 
-        private val ARG_PARAM1 = "param1"
-        private val ARG_PARAM2 = "param2"
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
 
-        fun newInstance(param1: String, param2: String): LoginFragment {
-            val fragment = LoginFragment()
-            val args = Bundle()
-            args.putString(ARG_PARAM1, param1)
-            args.putString(ARG_PARAM2, param2)
-            fragment.arguments = args
-            return fragment
-        }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                p0?.let { loginView.updatePassword(it) }
+            }
+        })
     }
 }

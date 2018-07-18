@@ -1,20 +1,19 @@
 package com.mrtotem.avisame.models
 
+import com.google.gson.annotations.Expose
+
 /**
  * Created by Toto on 31/1/2018.
  */
 class User {
 
     private var _id: String? = ""
-    private var token: String = ""
+    private var token: String? = ""
     private var pushToken: String = ""
     private var email: String? = null
     private var password: String = ""
     private var firstName: String = ""
     private var lastName: String = ""
-    private var dni: String = ""
-
-    private var friends: List<String>? = null
 
     constructor(id: String, token: String, pushToken: String, email: String, password: String, firstName: String, lastName: String, dni: String) {
         this._id = id
@@ -24,19 +23,18 @@ class User {
         this.password = password
         this.firstName = firstName
         this.lastName = lastName
-        this.dni = dni
     }
 
-    constructor(id: String, email: String) {
+    constructor(id: String?, token: String?) {
         this._id = id
-        this.email = email
+        this.token = token
     }
 
     fun getPushToken(): String {
         return pushToken
     }
 
-    fun getToken(): String {
+    fun getToken(): String? {
         return token
     }
 
@@ -58,17 +56,5 @@ class User {
 
     fun getLastName(): String {
         return lastName
-    }
-
-    fun getDni(): String {
-        return dni
-    }
-
-    fun getFriends(): List<String>? {
-        return friends
-    }
-
-    fun setFriends(friends: List<String>) {
-        this.friends = friends
     }
 }

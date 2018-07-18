@@ -14,13 +14,14 @@ import com.mrtotem.avisame.R
 import com.mrtotem.avisame.enums.UITypes
 import com.mrtotem.avisame.presenters.MainPresenter
 import com.mrtotem.avisame.presenters.MessagesPresenter
+import com.mrtotem.avisame.views.activities.base.BaseActivity
 import com.mrtotem.avisame.views.fragments.AlertsFragment
 import com.mrtotem.avisame.views.fragments.FriendsFragment
 import com.mrtotem.avisame.views.fragments.MessagesFragment
 import com.mrtotem.avisame.views.fragments.base.TabFragment
 import com.mrtotem.avisame.views.interfaces.BaseMvp
 
-class MainActivity : AppCompatActivity(), BaseMvp {
+class MainActivity : BaseActivity(), BaseMvp {
 
     private lateinit var mToolbar: Toolbar
     private lateinit var mTabLayout: TabLayout
@@ -33,10 +34,10 @@ class MainActivity : AppCompatActivity(), BaseMvp {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mToolbar = findViewById<Toolbar>(R.id.toolbar) as Toolbar
+        mToolbar = findViewById(R.id.toolbar)
         mTabLayout = findViewById<View>(R.id.tab) as TabLayout
-        mDrawerLayout = findViewById<DrawerLayout>(R.id.drawer) as DrawerLayout
-        mNavigationView = findViewById<RecyclerView>(R.id.nav_view) as RecyclerView
+        mDrawerLayout = findViewById(R.id.drawer)
+        mNavigationView = findViewById(R.id.nav_view)
 
         setSupportActionBar(mToolbar)
 
@@ -81,7 +82,7 @@ class MainActivity : AppCompatActivity(), BaseMvp {
 
         mTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                when (tab!!.position) {
+                when (tab?.position) {
                     0 -> tab.icon = getDrawable(R.mipmap.action)
                     1 -> tab.icon = getDrawable(R.mipmap.message)
                     2 -> tab.icon = getDrawable(R.mipmap.friends)
@@ -94,7 +95,7 @@ class MainActivity : AppCompatActivity(), BaseMvp {
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-                when (tab!!.position) {
+                when (tab?.position) {
                     0 -> tab.icon = getDrawable(R.mipmap.action_unselected)
                     1 -> tab.icon = getDrawable(R.mipmap.message_unselected)
                     2 -> tab.icon = getDrawable(R.mipmap.friends_unselected)

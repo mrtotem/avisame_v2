@@ -36,6 +36,8 @@ class MessagesManager private constructor() {
 
     companion object {
         //Debuggable field to check instance count
+        val ARRIVED_MESSAGES: String = "ARRIVED_MESSAGED"
+        
         var myInstancesCount = 0
         private val mInstance: MessagesManager = MessagesManager()
 
@@ -62,7 +64,7 @@ class MessagesManager private constructor() {
         val arrivalsCall: Call<ArrivalsResponse>? = messagesService?.getArrivalMessages("", "", "")
         arrivedCatalog.subscribeToArrivalsSubject(Consumer {
             if (it) {
-                messagesGetterSubject.onNext(SubjectItem(null, true))
+                messagesGetterSubject.onNext(SubjectItem(ARRIVED_MESSAGES, null, true))
             }
         })
         arrivalsCall?.enqueue(arrivedCatalog)

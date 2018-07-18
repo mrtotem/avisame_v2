@@ -23,7 +23,7 @@ abstract class BaseFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        mHomeMvp!!.configToolbar(UITypes.WITH_NAVIGATION)
+        mHomeMvp?.configToolbar(UITypes.WITH_NAVIGATION)
     }
 
     override fun onDetach() {
