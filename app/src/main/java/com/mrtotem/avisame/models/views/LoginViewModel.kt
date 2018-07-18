@@ -2,6 +2,8 @@ package com.mrtotem.avisame.models.views
 
 import android.util.Log
 import com.mrtotem.avisame.contracts.OnBoardingContract
+import com.mrtotem.avisame.contracts.OnBoardingContract.Companion.GET_USER_RESPONSE
+import com.mrtotem.avisame.contracts.OnBoardingContract.Companion.LOGIN_RESPONSE
 import com.mrtotem.avisame.managers.UserOperationsManager
 import com.mrtotem.avisame.models.responses.SubjectItem
 import io.reactivex.functions.Consumer
@@ -21,11 +23,11 @@ class LoginViewModel(var view: OnBoardingContract.View, private val navigator: O
         it.item?.let { data ->
             Log.d("USER", "LOGIN SUCCESS")
             when (it.key) {
-                UserOperationsManager.LOGIN_RESPONSE -> /*getUser()*/ {
+                LOGIN_RESPONSE -> /*getUser()*/ {
                     navigator.showLoadingView(false)
                     navigator.navigateToMain()
                 }
-                UserOperationsManager.GET_USER_RESPONSE -> Log.d("USER", "GET USER SUCCESS")
+                GET_USER_RESPONSE -> Log.d("USER", "GET USER SUCCESS")
                 else -> {
                 }
             }

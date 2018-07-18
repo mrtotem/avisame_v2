@@ -14,6 +14,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.mrtotem.avisame.R
+import com.mrtotem.avisame.models.views.RegisterViewModel
 import com.mrtotem.avisame.widgets.AvisameEditView
 import com.mrtotem.avisame.widgets.AvisameTextView
 
@@ -25,6 +26,9 @@ class RegisterFragment : Fragment() {
     lateinit var mEmail: AvisameEditView
     lateinit var mPassword: AvisameEditView
     lateinit var mPasswordConfirm: AvisameEditView
+
+    private lateinit var registerView: RegisterViewModel
+
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -56,6 +60,15 @@ class RegisterFragment : Fragment() {
         sb.setSpan(StyleSpan(Typeface.NORMAL),
                 0, 21,
                 Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+
+        mRegister.setOnClickListener {
+            registerView.register()?.let {
+                this.view?.let { v ->
+                    Snackbar.make(v, it, Snackbar.LENGTH_SHORT)
+                            .show()
+                }
+            }
+        }
 
         mTermsAndConditions.text = sb
 

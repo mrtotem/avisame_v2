@@ -3,6 +3,7 @@ package com.mrtotem.avisame.managers
 import android.view.View
 import com.mrtotem.avisame.contracts.OnBoardingContract.Companion.GET_USER_RESPONSE
 import com.mrtotem.avisame.contracts.OnBoardingContract.Companion.LOGIN_RESPONSE
+import com.mrtotem.avisame.contracts.OnBoardingContract.Companion.REGISTER_RESPONSE
 import com.mrtotem.avisame.http.AvisameApiClient
 import com.mrtotem.avisame.http.catalogs.LoginCatalog
 import com.mrtotem.avisame.http.catalogs.RegisterCatalog
@@ -96,5 +97,15 @@ class UserOperationsManager {
                 .subscribe(registerObserver)
 
         val userCall: Call<RegisterResponse>? = userService?.registerAnUser(registerCatalog.email, registerCatalog.password)
+
+        registerCatalog.subscribe(Consumer {
+            if (it) {
+                loginNotification.onNext(SubjectItem(REGISTER_RESPONSE, null, null))
+            } else {
+                loginNotification.onNext(SubjectItem(REGISTER_RESPONSE, SubjectError("Register Error"), null))
+            }
+        })
+
+        userCall?.enqueue(registerCatalog)
     }
 }

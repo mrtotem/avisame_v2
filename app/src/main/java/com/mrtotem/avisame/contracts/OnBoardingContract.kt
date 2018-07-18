@@ -16,6 +16,7 @@ class OnBoardingContract {
 
     companion object {
         const val LOGIN_RESPONSE: String = "LOGIN_RESPONSE"
+        const val REGISTER_RESPONSE: String = "REGISTER_RESPONSE"
         const val GET_USER_RESPONSE: String = "GET_USER_RESPONSE"
     }
 }
