@@ -1,6 +1,7 @@
 package com.mrtotem.avisame.views.fragments
 
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -28,6 +29,18 @@ class LoginFragment :
         OnBoardingContract.Navigator,
         OnBoardingContract.View {
 
+    override fun get(): View? {
+        return view
+    }
+
+    override fun showLoadingView(show: Boolean) {
+        if (show) {
+            mPresenterContract.loadingPresenter()?.showLoadingView()
+        } else {
+            mPresenterContract.loadingPresenter()?.hideLoadingView()
+        }
+    }
+
     override fun navigateToRegister() {
         NavigationUtils.replaceFragmentOnActivityBackstack(
                 activity.supportFragmentManager,
@@ -44,8 +57,14 @@ class LoginFragment :
     lateinit var mLogin: Button
     lateinit var mUsername: AvisameEditView
     lateinit var mPassword: AvisameEditView
+    lateinit var mPresenterContract: OnBoardingContract.Presenter
 
     private lateinit var loginView: LoginViewModel
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        mPresenterContract = getContext() as OnBoardingContract.Presenter
+    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -63,7 +82,7 @@ class LoginFragment :
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        loginView = LoginViewModel(this.view!!, this)
+        loginView = LoginViewModel(this, this)
         setupView()
     }
 

@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.RelativeLayout
 import com.mrtotem.avisame.R
-import com.mrtotem.avisame.presenters.NavigatorPresenter
+import com.mrtotem.avisame.presenters.LoadingPresenter
 import com.mrtotem.avisame.views.interfaces.NavigatorMvp
 
 open class BaseActivity : AppCompatActivity(), NavigatorMvp {
@@ -18,12 +18,12 @@ open class BaseActivity : AppCompatActivity(), NavigatorMvp {
         findViewById<RelativeLayout>(R.id.loading_view)?.visibility = View.VISIBLE
     }
 
-    lateinit var navPresenter: NavigatorPresenter
+    lateinit var navPresenter: LoadingPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        navPresenter = NavigatorPresenter()
+        navPresenter = LoadingPresenter()
         navPresenter.attachView(this)
     }
 

@@ -1,13 +1,12 @@
 package com.mrtotem.avisame.models.views
 
 import android.util.Log
-import android.view.View
 import com.mrtotem.avisame.contracts.OnBoardingContract
 import com.mrtotem.avisame.managers.UserOperationsManager
 import com.mrtotem.avisame.models.responses.SubjectItem
 import io.reactivex.functions.Consumer
 
-class LoginViewModel(var view: View, private val navigator: OnBoardingContract.Navigator) {
+class LoginViewModel(var view: OnBoardingContract.View, private val navigator: OnBoardingContract.Navigator) {
 
     var username = ""
     var password = ""
@@ -22,7 +21,10 @@ class LoginViewModel(var view: View, private val navigator: OnBoardingContract.N
         it.item?.let { data ->
             Log.d("USER", "LOGIN SUCCESS")
             when (it.key) {
-                UserOperationsManager.LOGIN_RESPONSE -> /*getUser()*/ navigator.navigateToMain()
+                UserOperationsManager.LOGIN_RESPONSE -> /*getUser()*/ {
+                    navigator.showLoadingView(false)
+                    navigator.navigateToMain()
+                }
                 UserOperationsManager.GET_USER_RESPONSE -> Log.d("USER", "GET USER SUCCESS")
                 else -> {
                 }
@@ -43,14 +45,17 @@ class LoginViewModel(var view: View, private val navigator: OnBoardingContract.N
             password.isEmpty() -> {
                 return "Por favor completá tu contraseña"
             }
-            else -> UserOperationsManager.getInstance().callToLogin(view, username, password, loginObserver)
+            else -> {
+                navigator.showLoadingView(true)
+                UserOperationsManager.getInstance().callToLogin(view.get(), username, password, loginObserver)
+            }
         }
 
         return null
     }
 
     fun getUser() {
-        UserOperationsManager.getInstance().getLoggedUser(view, loginObserver)
+        UserOperationsManager.getInstance().getLoggedUser(view.get(), loginObserver)
     }
 
     fun updateUsername(user: CharSequence?) {

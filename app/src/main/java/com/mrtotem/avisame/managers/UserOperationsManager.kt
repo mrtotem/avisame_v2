@@ -1,6 +1,8 @@
 package com.mrtotem.avisame.managers
 
 import android.view.View
+import com.mrtotem.avisame.contracts.OnBoardingContract.Companion.GET_USER_RESPONSE
+import com.mrtotem.avisame.contracts.OnBoardingContract.Companion.LOGIN_RESPONSE
 import com.mrtotem.avisame.http.AvisameApiClient
 import com.mrtotem.avisame.http.catalogs.LoginCatalog
 import com.mrtotem.avisame.http.catalogs.RegisterCatalog
@@ -37,18 +39,17 @@ class UserOperationsManager {
         private var myInstancesCount = 0
         private val mInstance: UserOperationsManager = UserOperationsManager()
 
-        const val LOGIN_RESPONSE: String = "LOGIN_RESPONSE"
-        const val GET_USER_RESPONSE: String = "GET_USER_RESPONSE"
-
         @Synchronized
         fun getInstance(): UserOperationsManager {
             return mInstance
         }
     }
 
-    fun callToLogin(view: View, username: String, password: String, userObserver: Consumer<SubjectItem<String>>) {
+    fun callToLogin(view: View?, username: String, password: String, userObserver: Consumer<SubjectItem<String>>) {
+
+        view?.let { loginNotification.bindToLifecycle(it) }
+
         loginNotification
-                .bindToLifecycle(view)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(userObserver)
 
@@ -66,9 +67,11 @@ class UserOperationsManager {
         userCall?.enqueue(loginCatalog)
     }
 
-    fun getLoggedUser(view: View, userObserver: Consumer<SubjectItem<String>>) {
+    fun getLoggedUser(view: View?, userObserver: Consumer<SubjectItem<String>>) {
+
+        view?.let { loginNotification.bindToLifecycle(it) }
+
         loginNotification
-                .bindToLifecycle(view)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(userObserver)
 
@@ -84,9 +87,11 @@ class UserOperationsManager {
         userCall?.enqueue(userCatalog)
     }
 
-    fun callToRegister(view: View, username: String, email: String, password: String, registerObserver: Consumer<SubjectItem<String>>) {
+    fun callToRegister(view: View?, username: String, email: String, password: String, registerObserver: Consumer<SubjectItem<String>>) {
+
+        view?.let { loginNotification.bindToLifecycle(it) }
+
         loginNotification
-                .bindToLifecycle(view)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(registerObserver)
 

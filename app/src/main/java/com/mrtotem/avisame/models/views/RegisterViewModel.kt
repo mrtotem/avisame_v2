@@ -1,20 +1,19 @@
 package com.mrtotem.avisame.models.views
 
 import android.util.Log
-import android.view.View
 import com.mrtotem.avisame.contracts.OnBoardingContract
 import com.mrtotem.avisame.managers.UserOperationsManager
 import com.mrtotem.avisame.models.responses.SubjectItem
 import io.reactivex.functions.Consumer
 
-class RegisterViewModel(var view: View, private val navigator: OnBoardingContract.Navigator) {
+class RegisterViewModel(var view: OnBoardingContract.View, private val navigator: OnBoardingContract.Navigator) {
 
     var email = ""
     var username = ""
     var password = ""
     var passwordConfirm = ""
 
-    var loginObserver = Consumer<SubjectItem<String>> {
+    private var loginObserver = Consumer<SubjectItem<String>> {
 
         it.error?.let {
             Log.e("USER", it.error)
@@ -54,14 +53,14 @@ class RegisterViewModel(var view: View, private val navigator: OnBoardingContrac
             passwordConfirm != password -> {
                 return "Las contraseñas no coinciden"
             }
-            else -> UserOperationsManager.getInstance().callToRegister(view, username, password, loginObserver)
+            else -> UserOperationsManager.getInstance().callToRegister(view.get(), username, email, password, loginObserver)
         }
 
         return null
     }
 
     fun getUser() {
-        UserOperationsManager.getInstance().getLoggedUser(view, loginObserver)
+        UserOperationsManager.getInstance().getLoggedUser(view.get(), loginObserver)
     }
 
     fun updateUsername(user: CharSequence?) {
